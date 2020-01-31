@@ -2,16 +2,29 @@ import React from 'react';
 import './table.css';
 
 class Square extends React.Component {
-    render() {
+  // constructor(props){
+  //   super(props)
+  // }
+  render() {
       return (
-        <input className="square" placeholder={this.props.value}/>
+        <input type="text" className="square" onChange={(e)=> this.props.handleChange(e.target.value,this.props.value)}/>
       );
     }
   }
- 
+  
   class Box extends React.Component {
+    constructor() {
+      super()
+      var arr = new Array(10);
+      this.handleChange=this.handleChange.bind(this)
+    }
     renderSquare(i) {
-        return <Square value={i} />
+        return <Square value={i} handleChange={this.handleChange}/>
+    }
+    handleChange(input,value) {
+      console.log(input, value)
+      this.arr[value]=input
+      console.log(this.arr)
     }  
     render() {
         return (
@@ -69,12 +82,18 @@ class Square extends React.Component {
     render() {
       return (
         <div className="game">
+          <div className="header">
+            <h1>Sudoku!</h1>
+          </div>
+         
           <div className="game-board">
             <Board />
           </div>
           <div className="game-info">
             <div>{/* status */}</div>
             <ol>{/* TODO */}</ol>
+          </div>
+          <div className="footer">
           </div>
         </div>
       );
