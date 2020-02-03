@@ -11,15 +11,12 @@
   font-size: 30px;
 }
 
-
 .game-board {
   display: flex;
   width: 58%;
   margin-left: 42%;
   margin-top: 31px;
-
 }
-
 
 body {
     font: 14px "Century Gothic", Futura, sans-serif;

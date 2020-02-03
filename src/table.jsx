@@ -2,12 +2,10 @@ import React from 'react';
 import './table.css';
 
 class Square extends React.Component {
-  // constructor(props){
-  //   super(props)
-  // }
+
   render() {
       return (
-        <input type="text" className="square" onChange={(e)=> this.props.handleChange(e.target.value,this.props.value)}/>
+        <input type="text" className="square" onChange={(e)=> this.props.handleChange(e.target.value,this.props.boxValue)}/>
       );
     }
   }
@@ -15,16 +13,25 @@ class Square extends React.Component {
   class Box extends React.Component {
     constructor() {
       super()
-      var arr = new Array(10);
+      this.state = {
+         boxArray : new Array(9).fill(0)
+      }
       this.handleChange=this.handleChange.bind(this)
     }
     renderSquare(i) {
-        return <Square value={i} handleChange={this.handleChange}/>
-    }
+        return  (
+           <Square boxValue={i} handleChange={this.handleChange}/>
+
+        )
+      }
     handleChange(input,value) {
-      console.log(input, value)
-      this.arr[value]=input
-      console.log(this.arr)
+
+      // console.log(value)
+      let newArr = this.state.boxArray.slice(0)
+      newArr[value] = input
+      // console.log(newArr)
+      this.setState({boxArray : newArr},()=>{this.props.updateBoardArray(this.state.boxArray)})
+
     }  
     render() {
         return (
@@ -49,10 +56,27 @@ class Square extends React.Component {
       }
   }
   class Board extends React.Component {
-    renderBox(i) {
-      return <Box value={i} />;
+    constructor(props) {
+      super(props)
+      this.state = {
+        boardArray : new Array(9).fill(0)
+
+     }
+      this.updateBoardArray=this.updateBoardArray.bind(this)
     }
-  
+
+    renderBox(i) {
+      return <Box boardValue={i} updateBoardArray={(arr)=>{this.updateBoardArray(arr,i)}}  />;
+    }
+    updateBoardArray(arr, i) {
+      let newArr = this.state.boardArray.slice(0)
+      newArr[i] = arr
+      console.log(newArr)
+      this.setState( {
+        boardArray : newArr
+            })
+    }
+   
     render() {
      //const status = 'Next player: X';
   
