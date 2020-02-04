@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import Stopwatch from "./Stopwatch";
 import './table.css';
 
 //---------------------------------------------------------------------------------
@@ -36,6 +37,7 @@ class Box extends React.Component {
         return classNames("errorSquare")
     }
     handleChange(input,value) {
+
       if (!isNaN(input) && input<10 && input>=0) {
         let newArr = this.state.boxArray.slice(0)
         newArr[value] = input
@@ -136,6 +138,7 @@ class Game extends React.Component {
               <Board />
             </div>
             <div className="game-info">
+              <Stopwatch />
               <div>{/* status */}</div>
               <ol>{/* TODO */}</ol>
             </div>
@@ -147,5 +150,3 @@ class Game extends React.Component {
     }
 export default Game;
 // ========================================
-  
- 
