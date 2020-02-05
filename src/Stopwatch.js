@@ -1,10 +1,4 @@
 import React, { Component } from "react";
-// import Button from '@material-ui/core/Button';
-import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
-import PauseRoundedIcon from '@material-ui/icons/PauseRounded';
-import RotateLeftRoundedIcon from '@material-ui/icons/RotateLeftRounded';
-
-import Fab from '@material-ui/core/Fab';
 import "./table.css";
 
 
@@ -59,27 +53,20 @@ class Stopwatch extends Component {
                 <div className="Stopwatch-buttons">
                     
                     {this.state.timerOn === false && this.state.timerTime === 0 && (
-                    <Fab className="Start"  color="primary" onClick={this.startTimer}>  
-                      <PlayArrowRoundedIcon size="large" />
-                    </Fab>
+                    <button className="Start" onClick={this.startTimer}> <img src="../../play-button.png"/>
+                    </button>
                     )} 
                     
                     {this.state.timerOn === true && (
-                    <Fab className="Stop" color="primary" onClick={this.stopTimer}>
-                      <PauseRoundedIcon size="large" />
-                    </Fab>
+                    <button className="Stop" onClick={this.stopTimer}>Stop</button>
                     )}
                     
                     {this.state.timerOn === false && this.state.timerTime > 0 && (
-                    <Fab className="Start"  color="primary" onClick={this.startTimer}>  
-                      <PlayArrowRoundedIcon size="large" />
-                    </Fab>
+                    <button className="Start" onClick={this.startTimer}>Resume</button>
                     )}
         
                     {this.state.timerOn === false && this.state.timerTime > 0 && (
-                      <Fab className="Restart"  color="primary" onClick={this.resetTimer}>  
-                      <RotateLeftRoundedIcon size="large" />
-                    </Fab>
+                    <button className="Restart" onClick={this.resetTimer}>Reset</button>
                     )}
 
                 </div>

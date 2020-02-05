@@ -85,32 +85,18 @@ class Board extends React.Component {
       constructor(props) {
         super(props)
         this.state = {
-          boardArray : new Array(9).fill(0),
-          item : new Array(9).fill(0)
+          boardArray : new Array(9).fill(0)
         }
         this.updateBoardArray=this.updateBoardArray.bind(this)
       }
       
-      componentDidMount(){
-        fetch('https://sugoku.herokuapp.com/board?difficulty=easy')
-        .then(results => {
-          return results.json();
-          })
-          .then(rawData => {
-            this.setState({
-              item : rawData
-            })
-            console.log(this.state.item)
-          }        
-        )
-      }
       renderBox(i) {
         return <Box boardValue={i} updateBoardArray={(arr)=>{this.updateBoardArray(arr,i)}}  />;
       }
       updateBoardArray(arr, i) {
         let newArr = this.state.boardArray.slice(0)
         newArr[i] = arr
-        // console.log(newArr)
+        console.log(newArr)
         this.setState( {
           boardArray : newArr
         })
