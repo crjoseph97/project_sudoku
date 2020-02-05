@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+// import Button from '@material-ui/core/Button';
+import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
+import PauseRoundedIcon from '@material-ui/icons/PauseRounded';
+import RotateLeftRoundedIcon from '@material-ui/icons/RotateLeftRounded';
+
+import Fab from '@material-ui/core/Fab';
 import "./table.css";
 
 
@@ -53,20 +59,27 @@ class Stopwatch extends Component {
                 <div className="Stopwatch-buttons">
                     
                     {this.state.timerOn === false && this.state.timerTime === 0 && (
-                    <button className="Start" onClick={this.startTimer}> <img src="../../play-button.png"/>
-                    </button>
+                    <Fab className="Start"  color="primary" onClick={this.startTimer}>  
+                      <PlayArrowRoundedIcon size="large" />
+                    </Fab>
                     )} 
                     
                     {this.state.timerOn === true && (
-                    <button className="Stop" onClick={this.stopTimer}>Stop</button>
+                    <Fab className="Stop" color="primary" onClick={this.stopTimer}>
+                      <PauseRoundedIcon size="large" />
+                    </Fab>
                     )}
                     
                     {this.state.timerOn === false && this.state.timerTime > 0 && (
-                    <button className="Start" onClick={this.startTimer}>Resume</button>
+                    <Fab className="Start"  color="primary" onClick={this.startTimer}>  
+                      <PlayArrowRoundedIcon size="large" />
+                    </Fab>
                     )}
         
                     {this.state.timerOn === false && this.state.timerTime > 0 && (
-                    <button className="Restart" onClick={this.resetTimer}>Reset</button>
+                      <Fab className="Restart"  color="primary" onClick={this.resetTimer}>  
+                      <RotateLeftRoundedIcon size="large" />
+                    </Fab>
                     )}
 
                 </div>

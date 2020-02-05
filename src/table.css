@@ -10,13 +10,19 @@
   color: white;
   font-size: 30px;
 }
-
 .game-board {
+  display: -ms-flexbox;
   display: flex;
-  width: 58%;
-  margin-left: 42%;
-  margin-top: 31px;
+  width: 19%;
+  text-align: center;
+  margin: 30px auto 0 auto;
 }
+
+.Stopwatch {
+  text-align: center;
+  margin-top: 30px;
+}
+
 
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
@@ -79,4 +85,7 @@ body {
     display: flex;
     color: black;
   }
-      
+  
+.MuiButtonBase-root.MuiFab-root.Start.MuiFab-primary {
+  margin-right: 10px;
+}
